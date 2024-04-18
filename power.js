@@ -32,6 +32,20 @@ document.getElementById('resetButton').addEventListener('click', function() {
 // Hover effect
 document.getElementById('container').addEventListener('mouseover', function(e) {
     if (e.target.classList.contains('grid-cell')) {
-        e.target.style.backgroundColor = 'black';
+        // Randomize RGB values
+        const randomRed = Math.floor(Math.random() * 256);
+        const randomGreen = Math.floor(Math.random() * 256);
+        const randomBlue = Math.floor(Math.random() * 256);
+        e.target.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+
+        // Darken the square by 10%
+        const currentColor = e.target.style.backgroundColor;
+        if (currentColor !== 'black') {
+            let [, red, green, blue] = currentColor.match(/\d+/g);
+            red = Math.max(0, red - 25.5); // 25.5 is 10% of 255
+            green = Math.max(0, green - 25.5);
+            blue = Math.max(0, blue - 25.5);
+            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        }
     }
 });
