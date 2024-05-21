@@ -49,3 +49,38 @@ document.getElementById('container').addEventListener('mouseover', function(e) {
         }
     }
 });
+
+
+//  button 
+// Function to generate a random color
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Function to add hover effect with random colors to an element
+function addRandomColorHoverEffect(element, property) {
+    element.addEventListener('mouseover', function() {
+        this.style[property] = getRandomColor();
+    });
+
+    // Optional: Reset the color when the mouse leaves the element
+    element.addEventListener('mouseout', function() {
+        this.style[property] = ''; // Reset to original color
+    });
+}
+
+// Select the h1 and button elements
+const h1Element = document.getElementById('randomColorText');
+const resetButton = document.getElementById('resetButton');
+
+// Add hover effects to the elements
+addRandomColorHoverEffect(h1Element, 'color');
+addRandomColorHoverEffect(resetButton, 'backgroundColor');
+
+
+
